@@ -1,0 +1,51 @@
+.icon{
+    background-image: url("../img/Sprites.d3498133.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.icon-button-livechat {
+    background-position: -2679px -383px;
+}
+.livechat-button .icon-button-livechat{
+    position: relative;
+    background-color: #2680eb;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+}
+.mi-icon-close-circle-blue--small {
+    background-position: -2393px -522px;
+}
+.livechat-button .mi-icon-close-circle-blue--small{
+    position: absolute;
+    right: 1px;
+    top: 0px;
+    z-index: 1;
+}
+.mi-live-chat-btn {
+    background-position: -2582px -401px;
+}
+.mi-24 {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+}
+.mi-icon-close-circle-blue--small {
+    background-position: -2393px -522px;
+}
+.mi-16 {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+}
+.mi-live-chat-btn {
+    background-position: -2582px -401px;
+}
+.icon-message .icon-button-livechat{
+    position: relative;
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat Widet JS API</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/icon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="new-feature"
+        style="top: 465px; right: 0px; left: unset; bottom: unset">
+        <div draggable="true" class="ultility-bar sticky-bar right-bar" style="display: none;" onclick="showChat()">
+            <div class="live-chat-container ultility-btn">
+                <div class="notify-new-message hide-new-message" id="notification2">
+                    <div class="in-line"></div>
+                </div>
+                <div class="live-chat-icon icon-btn">
+                    <div class="icon mi-24 mi-live-chat-btn"></div>
+                </div>
+            </div>
+        </div>
+        <div class="livechat">
+            <div class="livechat-button" id ="livechat-button">
+                <div class="icon mi-16 notify-new-message hide-new-message" id="notification1"></div>
+                <div class="icon mi-16 mi-icon-close-circle-blue--small" onclick="hideButton()"></div>
+                <div draggable="true" class="icon mi-64 icon-button-livechat" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start of LiveChat (www.livechat.com) code -->
+    <script>
+        window.__lc = window.__lc || {};
+        window.__lc.license = 14608287;
+        (function (n, t, c) {
+            function i(n) {
+                return e._h ? e._h.apply(null, n) : e._q.push(n);
+            }
+            var e = {
+                _q: [],
+                _h: null,
+                _v: "2.0",
+                on: function () {
+                    i(["on", c.call(arguments)]);
+                },
+                once: function () {
+                    i(["once", c.call(arguments)]);
+                },
+                off: function () {
+                    i(["off", c.call(arguments)]);
+                },
+                get: function () {
+                    if (!e._h)
+                        throw new Error(
+                            "[LiveChatWidget] You can't use getters before load."
+                        );
+                    return i(["get", c.call(arguments)]);
+                },
+                call: function () {
+                    i(["call", c.call(arguments)]);
+                },
+                init: function () {
+                    var n = t.createElement("script");
+                    (n.async = !0),
+                        (n.type = "text/javascript"),
+                        (n.src = "https://cdn.livechatinc.com/tracking.js"),
+                        t.head.appendChild(n);
+                },
+            };
+            !n.__lc.asyncInit && e.init(),
+                (n.LiveChatWidget = n.LiveChatWidget || e);
+        })(window, document, [].slice);
+    </script>
+    <noscript><a href="https://www.livechat.com/chat-with/14608287/" rel="nofollow">Chat with us</a>, powered by
+        <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+    <!-- End of LiveChat code -->
+</body>
+<script>
+    LiveChatWidget.call("maximize");
+    function hideButton() {
+        document.querySelector(".livechat-button").style.display = "none";
+        document.querySelector(".ultility-bar ").style.display = "flex";
+    }
+    function showChat(){
+        LiveChatWidget.call('maximize');
+        document.querySelector(".ultility-bar ").style.display = "none";
+        // document.querySelector(".livechat-button").style.display = "flex";
+    }
+    function showChatButton(){
+        LiveChatWidget.call('maximize');
+        document.querySelector(".livechat-button").style.display = "none";
+    
+    }
+    LiveChatWidget.on("visibility_changed", function(data) {
+    if (data.visibility === "hidden") {
+        document.querySelector(".livechat-button").style.display = "flex";
+        LiveChatWidget.on('new_event', function(event) {
+        switch (event.type) {
+            case "message":
+            document.getElementById("notification1").classList.remove("hide-new-message");
+            document.getElementById("notification2").classList.remove("hide-new-message");
+            break;
+
+            case "rich_message":
+            // handle new rich_message event
+            document.getElementById("notification1").classList.remove("hide-new-message");
+            document.getElementById("notification2").classList.remove("hide-new-message");
+            break;
+
+            case "file":
+            // handle new file eventS
+            document.getElementById("notification1").classList.remove("hide-new-message");
+            document.getElementById("notification2").classList.remove("hide-new-message");
+            break;
+
+            default:
+            break;
+        }
+
+        if (event.greeting) {
+            // new event is a greeting
+            // greeting properties are available
+            var id = greeting.id;
+            var uniqueId = greeting.uniqueId;
+        }
+    })
+    }
+    if(data.visibility === "maximized"){
+        document.querySelector(".livechat-button").style.display = "none";
+        document.getElementById("notification1").classList.add("hide-new-message");
+        document.getElementById("notification2").classList.add("hide-new-message");
+    }
+    });
+    dragElement(document.getElementById("livechat-button"));
+    function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "-button")) {
+        /* if present, the header is where you move the DIV from:*/
+        document.getElementById(elmnt.id + "-button").onmousedown = dragMouseDown;
+    } else {
+        /* otherwise, move the DIV from anywhere inside the DIV:*/
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        document.getElementById("livechat-button").classList.add("dragging");
+    }
+
+    function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+        document.getElementById("livechat-button").classList.remove("dragging");
+    }
+    }
+    document.getElementsByClassName("icon-button-livechat")[0].addEventListener("click", function(){
+        showChatButton();
+    });
+</script>
+
+</html>

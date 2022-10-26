@@ -1,0 +1,137 @@
+html {
+  background-color: #fff;
+}
+
+.container {
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: calc(100vw - 400px);
+  width: 300px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: rgb(233, 238, 244);
+}
+.card__header {
+  padding: 8px 0;
+  margin-bottom: 8px;
+  color: rgb(66, 77, 87);
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.card button {
+  flex: 1;
+  padding: 0.5em 0.7em;
+  color: white;
+  border-radius: 4px;
+  font-weight: 400;
+  background-color: #2000f0;
+  border: 2px solid #2000f0;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #2000f0;
+}
+
+.card input {
+  flex: 4;
+  width: 100%;
+  margin-right: 8px;
+  padding: 0 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.card input:focus {
+  border: 1px solid #2000f0;
+}
+.livechat-button {
+  position:relative;
+  right: 34px;
+  bottom: 42px;
+  filter: drop-shadow(0 0 6px grey);
+  z-index: 101;
+}
+livechat{
+  position: absolute
+}
+.new-feature {
+  position: fixed;
+  z-index: 999;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.new-feature .right-bar.sticky-bar .live-chat-container{
+  margin-bottom: 2px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.new-feature .ultility-bar .ultility-btn {
+  position: relative;
+  height: 42px;
+  width: 40px;
+  background-color: #2680eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 25%);
+}
+.new-feature .notify-new-message{
+  width: 16px;
+  height: 16px;
+  background: #ff6e6e;
+  border: 2px solid #fff;
+  filter: drop-shadow(-3px 1px 5px rgba(0,0,0,.16));
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+}
+.hide-new-message{
+  display: none;
+}
+.new-feature .notify-new-message .in-line{
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.new-feature .ultility-bar.sticky-bar .icon-btn, .new-feature .ultility-bar:hover {
+  visibility: visible;
+}
+.dragging {
+  pointer-events: none;
+}
+
